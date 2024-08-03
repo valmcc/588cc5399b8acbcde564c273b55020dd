@@ -1,0 +1,236 @@
+<!-- don't look at my source code please!!!! -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <title>🎉 rachel n valerian marriage website 🎉</title>
+    <meta name="description" content="wedding website">
+    
+    <!-- Recommended minimum -->
+    <meta property="og:title" content="wedding website">
+    <meta property="og:description" content="site for valerian and rachel's wedding">
+    <!-- <meta property="og:image" content="img/site-image.jpg"> -->
+    <!-- <meta name="twitter:card" content="summary_large_image"> -->
+    
+    <!-- You could also inline the stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+  </head>
+  <body>
+    
+    <header>
+      <h1>
+        <a href="#home">welcome</a>
+      </h1>
+      <nav>
+        <a href="#rsvp">rsvp</a>
+        <a href="#details">exciting details</a>
+        <a href="#photos">pictures</a>
+      </nav>
+    </header>
+    
+    <main>
+      
+      <section id="home"> <!-- HOME -->
+        
+        <h2 style="text-align: center">valerian and rachel's wedding website</h2>
+          <img style="max-height:500px;max-width:500px;height:auto;width:auto;display: block;margin-left: auto;margin-right: auto;width: 100%;" loading="lazy" alt="" src="img/banner.png">
+        <h2 style="text-align: center;font-weight: 500;">if you want to come (and we want you to come), this is where you can <a href="#rsvp">rsvp</a> and find all of the <a href="#details">details!</a></h2>        
+        
+      </section>
+      
+      <section id="rsvp"> <!-- RSVP -->
+        
+        <!-- <p>please rsvp here!</p> -->
+        <h2>rsvp</h2>
+        <p id='rsvping' style="display:none">RSVPing for <span id='name-1' style="display:none">Name 1</span> 
+          <span id='name-2' style="display:none">Name 2</span> 
+          <span id='name-3' style="display:none">Name 3</span> 
+          <span id='name-4' style="display:none">Name 4</span> 
+          (<span id='name-count'>Name count</span>)
+        </p>
+
+      <form id="passwordForm" name="passwordForm" onsubmit="window.location = url">
+          enter your password: <input type="text" name="code">
+          <input id="passwordSubmit" type="submit" value="Submit">
+      </form>
+      <iframe id=iFrameForm title=form style="display:none" src="" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+ <!--      <iframe
+        id="iFrameForm"
+        title="form"
+        width="300"
+        height="200"
+        src=""
+        style="display:none">
+      </iframe>
+ -->      <script>
+      //btoa("Valerian McCaskill&Rachel Mason")
+      //QmluZ2xlIE1hbiZMb29wZXIgU2Nvb3BlciZCaW5nIENvbmcmQVNEQUQ=
+      //QmluZ2xlIE1hbiZMb29wZXIgU2Nvb3BlciZCaW5nIENvbmc=
+      //VmFsZXJpYW4gTWNDYXNraWxsJlJhY2hlbCBNYXNvbg==
+      //Q2hlZXNlIE1jUXVlZW4m
+      const currentURL = new URL(window.location.href).searchParams;
+      const code = currentURL.get("code");
+      console.log('code',code);
+      var decryptedCode= "";
+      try {  
+          decryptedCode = atob(code);
+      } catch (err) {}
+      console.log('decryptedCode',decryptedCode);
+      if (decryptedCode.includes("&")) {
+          var nameCount = decryptedCode.split("&").filter(function(e){ return e === 0 || e }).length;
+          var nameArray = [];
+          for (const x of Array(nameCount).keys()) {
+              nameArray.push(decryptedCode.split("&")[x]);
+          }
+          console.log(nameArray);
+          document.getElementById('name-count').innerText = nameCount;
+          if (nameArray[0]){document.getElementById('name-1').innerText = nameArray[0]+', ';
+              document.getElementById('name-1').style.display = 'inline';
+              document.getElementById('iFrameForm').style.display = 'block';
+              document.getElementById('rsvping').style.display = 'block';
+              // form for single RSVP
+              document.getElementById('iFrameForm').src= "https://docs.google.com/forms/d/e/1FAIpQLSfaB37V2A_X--txGQ-AX_ef3xzxzzOa_va6jD61OyMV0sknag/viewform?usp=pp_url&entry.150588221="+nameArray[0];
+              // document.querySelectorAll('[data-initial-value="'+nameArray[0]+'""]')[0].setAttribute('readonly',"")
+          };
+          if (nameArray[1]){document.getElementById('name-2').innerText = nameArray[1]+', ';
+              document.getElementById('name-2').style.display = 'inline';
+              document.getElementById('iFrameForm').style.display = 'block';
+              document.getElementById('iFrameForm').src= "https://docs.google.com/forms/d/e/1FAIpQLSdPGEDwYwYyWZsjZ-wTchaKPTo1KcPt9-0fhKgSfYUKJDducQ/viewform?usp=pp_url&entry.150588221="+nameArray[0]+"&entry.823997860="+nameArray[1];
+          };
+          if (nameArray[2]){document.getElementById('name-3').innerText = nameArray[2]+', ';
+              document.getElementById('name-3').style.display = 'inline';
+              document.getElementById('iFrameForm').style.display = 'block';
+              document.getElementById('iFrameForm').src= "https://docs.google.com/forms/d/e/1FAIpQLSexsQxvIidK2vq5T1DuTdurDZaqunTfkJjcbFXQ8ZJ9-7wIXg/viewform?usp=pp_url&entry.150588221="+nameArray[0]+"&entry.823997860="+nameArray[1]+"&entry.41899311="+nameArray[2];
+          };
+          if (nameArray[3]){document.getElementById('name-4').innerText = nameArray[3]+', ';
+              document.getElementById('name-4').style.display = 'inline';
+              document.getElementById('iFrameForm').style.display = 'block';
+              document.getElementById('iFrameForm').src= "https://docs.google.com/forms/d/e/1FAIpQLScQUj6n-X-0splWe_m9c2YDiadzP-5H7r_XL_mPRLpUlyDkxg/viewform?usp=pp_url&entry.150588221="+nameArray[0]+"&entry.823997860="+nameArray[1]+"+&entry.41899311="+nameArray[2]+"&entry.1841012926="+nameArray[3];
+          };
+          document.getElementById("passwordForm").style.display = 'none';
+          document.getElementById("passwordSubmit").style.display = 'none';
+      } else {
+          console.log("Invalid code")
+          document.getElementById('name-count').innerText = "";
+          document.getElementById('name-1').innerText = "";
+          document.getElementById('name-2').innerText = "";
+          document.getElementById('name-3').innerText = "";
+          document.getElementById('name-4').innerText = "";
+          if (code){
+              console.log("Invalid code")
+              alert("incorrect password, please retry!");
+          } else {
+              console.log("no code")
+          }
+      }
+      </script>
+        
+        
+        
+      </section>
+      
+      <section id="details"> <!-- details -->
+        <h1>everything you need to know for the best party in the world<label for="lazy">1</label><input type="checkbox" id="lazy"><small>
+            actually best party in heidelburg
+           </small></h1>
+        <article>
+          <h3>when does everything happen?</h3>
+          <p>Saturday 23 November 2024 <a href="https://save2cal.com/v1/index.html?data=JTdCJTIydCUyMiUzQSUyMnZhbGVyaWFuJTIwYW5kJTIwcmFjaGVsJ3MlMjB3ZWRkaW5nISUyMHdvb2hvbyElMjIlMkMlMjJkJTIyJTNBJTIyJTIyJTJDJTIydXJsJTIyJTNBJTIyJTIyJTJDJTIybCUyMiUzQSUyMmhlaWRlJTIwbXVzZXVtJTIwb2YlMjBtb2Rlcm4lMjBhcnQlMjIlMkMlMjJmRCUyMiUzQWZhbHNlJTJDJTIyc0QlMjIlM0ElMjIyMDI0LTExLTMwJTIyJTJDJTIyc1QlMjIlM0ElMjIxNiUzQTAwJTIyJTJDJTIyZUQlMjIlM0ElMjIyMDI0LTExLTMwJTIyJTJDJTIyZVQlMjIlM0ElMjIyMyUzQTAwJTIyJTJDJTIydHolMjIlM0ElMjJBdXN0cmFsaWElMkZNZWxib3VybmUlMjIlN0Q=" target="_blank">(add to calendar)</a></p>
+          <p><b>4PM</b> - arrive for the ceremony </p>
+          <p><b>6PM</b> - recepton   ♪ ♬ </p>
+          <p><b>11PM</b> - bedtime   ʕ๑≚ᴥ≚ʔ</p>
+          <h3>who's getting married?</h3>
+          <p><a href="https://www.linkedin.com/in/rachel-mason-718a2914a/"> rachel mason</a> & <a href="https://www.linkedin.com/in/valerian-mccaskill-82a713a1/">valerian mccaskill</a></p>
+          <h3>how do i get there?</h3>
+          <p><a href="https://maps.app.goo.gl/zrbjLpGK53G4kLKt8">google maps link</a></p>
+        <figure> 
+          <a href="#img-about">         
+            <img loading="lazy" alt="" src="img/heide-map-annotated.jpg" width="1200" height="600">
+          </a>
+          <figcaption>^click for a bigger version</figcaption>
+        </figure>
+          <p>more information on the official website <a href="https://www.heide.com.au">here</a></p>
+          <h3>what do i wear?</h3>
+          <p> <a class="rainbow-text">colourful</a><a href="https://www.wikihow.life/Dress-For-a-Wedding"> cocktail attire</a></p>
+          <p>leave your black funeral outfit in the cupboard please, feel free to wear your colourful and fun fancy frocks. a suit and a colourful tie is fine (but not encouraged) for the less creatively minded</p>
+          <h3>do i have to bring a present?</h3>
+          <p>the best gift you can provide to us is your best moves on the dance floor, however if you also wish to contribute to the rachel and valerian fund, cash and untraceable cryptocurrency would also be appreciated!<label for="lazy2">2</label><input type="checkbox" id="lazy2"><small>
+            just kidding!!! (but if you're really interested, we do accept monero)
+           </small></p>
+          <h3>can i request a song for the dj?</h3>
+          <p><a href="#no">click here</a></p>
+          <h3>is justin timberlake performing?</h3>
+          <p>no, he is otherwise <a href="https://people.com/justin-timberlake-arrested-and-arraigned-dwi-charges-hamptons-8665137">detained</a></p>
+        </article>
+      
+      
+      </section>
+      
+      <section id="photos"> <!-- PHOTOS -->
+        
+        <p>please upload your pictures here!!</p>
+        <a href="https://www.dropbox.com/request/JnojJR1DBLKdx7uOapYY"><header></header>click here for the dropbox link</a>
+        <!-- You can use this grid of images in any page -->
+        
+<!--         <div class="grid">
+          <a href="#img-01"><img loading="lazy" alt="" src="//dummyimage.com/300x300/ddd/bbb"></a>
+          <a href="#img-02"><img loading="lazy" alt="" src="//dummyimage.com/400x300/ddd/bbb"></a>
+          <a href="#img-03"><img loading="lazy" alt="" src="//dummyimage.com/300x400/ddd/bbb"></a>
+          <a href="#img-04"><img loading="lazy" alt="" src="//dummyimage.com/300x300/ddd/bbb"></a>
+          <a href="#img-05"><img loading="lazy" alt="" src="//dummyimage.com/400x300/ddd/bbb"></a>
+          <a href="#img-06"><img loading="lazy" alt="" src="//dummyimage.com/300x400/ddd/bbb"></a>
+          <a href="#img-07"><img loading="lazy" alt="" src="//dummyimage.com/300x300/ddd/bbb"></a>
+          <a href="#img-08"><img loading="lazy" alt="" src="//dummyimage.com/400x300/ddd/bbb"></a>
+          <a href="#img-09"><img loading="lazy" alt="" src="//dummyimage.com/300x400/ddd/bbb"></a>
+          <a href="#img-10"><img loading="lazy" alt="" src="//dummyimage.com/300x300/ddd/bbb"></a>
+          <a href="#img-11"><img loading="lazy" alt="" src="//dummyimage.com/400x300/ddd/bbb"></a>
+          <a href="#img-12"><img loading="lazy" alt="" src="//dummyimage.com/300x400/ddd/bbb"></a>
+          <a href="#img-13"><img loading="lazy" alt="" src="//dummyimage.com/300x300/ddd/bbb"></a>
+          <a href="#img-14"><img loading="lazy" alt="" src="//dummyimage.com/400x300/ddd/bbb"></a>
+          <a href="#img-15"><img loading="lazy" alt="" src="//dummyimage.com/300x400/ddd/bbb"></a>
+        </div> -->
+        
+      </section>
+      
+        
+      <section id="no"> <!-- ANOTHER PAGE -->
+        
+        <p>no daniel, we can't play ed sheeran again. nice try</p>
+        <p><a href="#details">← back</a></p>
+        
+      </section>
+      
+    </main>
+    
+    <!-- ----------
+    LIGHTBOX IMAGES
+    ----------- -->
+
+    <!-- PHOTOS grid -->
+    <!-- 
+    <a href="#photos" class="lightbox" id="img-01"><img loading="lazy" alt="" src="//dummyimage.com/3000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-02"><img loading="lazy" alt="" src="//dummyimage.com/4000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-03"><img loading="lazy" alt="" src="//dummyimage.com/3000x4000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-04"><img loading="lazy" alt="" src="//dummyimage.com/3000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-05"><img loading="lazy" alt="" src="//dummyimage.com/4000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-06"><img loading="lazy" alt="" src="//dummyimage.com/3000x4000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-07"><img loading="lazy" alt="" src="//dummyimage.com/3000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-08"><img loading="lazy" alt="" src="//dummyimage.com/4000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-09"><img loading="lazy" alt="" src="//dummyimage.com/3000x4000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-10"><img loading="lazy" alt="" src="//dummyimage.com/3000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-11"><img loading="lazy" alt="" src="//dummyimage.com/4000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-12"><img loading="lazy" alt="" src="//dummyimage.com/3000x4000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-13"><img loading="lazy" alt="" src="//dummyimage.com/3000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-14"><img loading="lazy" alt="" src="//dummyimage.com/4000x3000/ddd/bbb"></a>
+    <a href="#photos" class="lightbox" id="img-15"><img loading="lazy" alt="" src="//dummyimage.com/3000x4000/ddd/bbb"></a>    
+     -->
+    <!-- Other images -->
+    
+    <a href="#about" class="lightbox" id="img-about"><img loading="lazy" alt="" src="img/heide-map-annotated.jpg"></a>
+    
+  </body>
+</html>
