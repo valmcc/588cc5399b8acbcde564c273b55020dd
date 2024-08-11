@@ -84,7 +84,7 @@ nav a:not(:last-of-type) {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
   color: var(--highlight);
 }
 
